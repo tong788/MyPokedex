@@ -1,0 +1,43 @@
+nav{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    
+    ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin-right: 2rem;
+    align-items: center;
+
+    li{
+        margin: 1rem;
+    }
+}
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+        color:black;
+}
+
+a:hover{
+       color:blue;
+       transition-duration: 500ms;
+ }
+
+.logo{
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.pokeball{
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+}

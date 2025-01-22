@@ -1,0 +1,47 @@
+.pikachu{
+    width: 15rem;
+    height: auto;
+}
+
+.herohome-container{
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: 1fr 1fr;
+}
+
+%home-container{
+    color:white;
+    display:flex;
+    justify-content: center;
+}
+
+.left-home-container{
+    @extend %home-container;
+}
+
+.right-home-container{
+    @extend %home-container;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-large;
+}
+
+.home-search{
+    @include flex-center;
+}
+
+.search-button{
+    border-radius: 1rem;
+    border: solid black 0.05rem;
+    width:5rem;
+    height:2rem;
+}
+
+.search-bar{
+    border-radius: 1rem;
+    border: solid black 0.05rem;
+    width:20rem;
+    height:2rem;
+    margin-right: 1rem;
+}

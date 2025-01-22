@@ -1,0 +1,93 @@
+.poke-big-container{
+    @include flex-center;
+}
+
+.poke-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+}
+
+.poke-loading{
+    @include flex-center;
+    flex-direction: column;
+    color: white;
+    
+}
+
+.loader {
+  border: 0.6rem solid #f3f3f3; /* Light grey */
+  border-top: 0.6rem solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 3.75rem;
+  height: 3.75rem;
+  animation: spin 2s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pokemon {
+    display: inline-block;
+    width: 10em;
+    height: 12em; /* Increased height for the image */
+    background-color: white;
+    border: solid 0.05rem rgb(35, 35, 35);
+    border-radius: 10%;
+    color: black;
+    list-style-type: none;
+    margin: 1rem;
+    text-align: center;
+}
+
+.pokemon-image {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+}
+
+%pagination-button {
+    width: 7rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+button.prev-button {
+    margin-right: 2rem;
+    @extend %pagination-button;
+    background-color: lightgray; /* Default background */
+}
+
+button.next-button {
+    @extend %pagination-button;
+    background-color: lightgray;
+}
+
+button.prev-button:hover {
+    background-color: blue;
+    cursor: pointer;
+}
+
+button.next-button:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+a.pokemon:hover{
+    background-color: rgb(213, 213, 213);
+}

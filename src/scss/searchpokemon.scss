@@ -1,0 +1,9 @@
+.searched-pokemon-container{
+    @include flex-center;
+    div{ 
+    color:black;
+    background-color: white;
+    width:50%;
+    @include flex-center;
+} 
+}
