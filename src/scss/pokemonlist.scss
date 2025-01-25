@@ -77,24 +77,24 @@
     transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-a.prev-button {
+button.prev-button {
     @extend %pagination-button;
     background-color: lightgray; /* Default background */
 }
 
-a.next-button {
+button.next-button {
     @extend %pagination-button;
     background-color: lightgray;
 }
 
-a.prev-button:hover {
+button.prev-button:hover {
     background-color: blue;
     color:white;
     font-weight: bold;
     cursor: pointer;
 }
 
-a.next-button:hover {
+button.next-button:hover {
     background-color: red;
     font-weight: bold;
     color:white;

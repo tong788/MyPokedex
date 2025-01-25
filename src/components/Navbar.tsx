@@ -14,7 +14,7 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/pokemon">Pokemon</Link>
+          <Link to="/pokemon/page/1">Pokemon</Link>
         </li>
         <li>
           <Link to="/favourite">Favourite</Link>

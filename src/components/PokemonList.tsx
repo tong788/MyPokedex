@@ -1,22 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { PokemonContext } from "../data/PokemonContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const PokemonList = () => {
   const pokeContext = useContext(PokemonContext);
-
-  const [currentPage, setCurrentPage] = useState(1);
+  const { page } = useParams<{ page: string }>();
+  const navigate = useNavigate(); // React Router navigation hook
+  const currentPage = page ? parseInt(page, 10) : 1; //change from string that get from useParam to number and page 1 by default if don't get string
   const itemsPerPage = 63;
 
   if (pokeContext?.loading)
     return <div className="poke-loading">Loading...</div>;
   if (pokeContext?.error) return <div>Error: {pokeContext?.error}</div>;
 
-  const totalItems = pokeContext?.pokemon?.length || 0; // Ensure totalItems is never undefined
-  const totalPages = totalItems > 0 ? Math.ceil(totalItems / itemsPerPage) : 1; // Prevent NaN
+  const totalItems = pokeContext?.pokemon?.length || 0;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  const lastItemIndex = currentPage * itemsPerPage;
-  const firstItemIndex = lastItemIndex - itemsPerPage;
+  const firstItemIndex = (currentPage - 1) * itemsPerPage;
+  const lastItemIndex = firstItemIndex + itemsPerPage;
   const currentItems = pokeContext?.pokemon.slice(
     firstItemIndex,
     lastItemIndex
@@ -24,7 +25,7 @@ const PokemonList = () => {
 
   return (
     <div>
-      <h2 className="poke-list-header">Pokemon List (Page {currentPage})</h2>
+      <h2 className="poke-list-header">Pokémon List (Page {currentPage})</h2>
       <div className="poke-big-container">
         <div className="poke-container">
           {currentItems?.map((item) => {
@@ -50,27 +51,27 @@ const PokemonList = () => {
 
       {/* Pagination Controls */}
       <div className="pagination">
-        <button
-          className="prev-button"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
+        {currentPage > 1 && (
+          <button
+            className="prev-button"
+            onClick={() => navigate(`/pokemon/page/${currentPage - 1}`)}
+          >
+            Previous
+          </button>
+        )}
 
         <span>
           Page {currentPage} of {totalPages}
         </span>
 
-        <button
-          className="next-button"
-          onClick={() =>
-            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-          }
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
+        {currentPage < totalPages && (
+          <button
+            className="next-button"
+            onClick={() => navigate(`/pokemon/page/${currentPage + 1}`)}
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

@@ -1,16 +1,16 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { PokemonContext } from "../data/PokemonContext";
 import { FaArrowLeft } from "react-icons/fa";
 import "../scss/style.scss";
 
 const SearchPokemon = () => {
-  const pokeContext = useContext(PokemonContext)
-  // const { pokemon } = usePokemon();
+  const pokeContext = useContext(PokemonContext);
   const { name } = useParams<{ name: string }>();
   const location = useLocation();
-  const imageUrl = location.state?.imageUrl;
+  const navigate = useNavigate(); 
 
+  const imageUrl = location.state?.imageUrl;
   const foundPokemon = pokeContext?.pokemon.find((p) => p.name === name);
 
   if (!foundPokemon) {
@@ -19,7 +19,7 @@ const SearchPokemon = () => {
 
   return (
     <div className="big-searched-pokemon-container">
-      <div className="arrow-container">
+      <div className="arrow-container" onClick={() => navigate(-1)}>
         <FaArrowLeft className="left-arrow" />
       </div>
       <div className="searched-pokemon-container">
