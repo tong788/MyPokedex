@@ -21,7 +21,7 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
     const fetchPokemon = async () => {
       try {
         setLoading(true);
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=63");
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=2500");
         if (!res.ok) {
           throw new Error("Failed to fetch Pokémon data");
         }

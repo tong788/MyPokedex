@@ -1,3 +1,10 @@
+.poke-list-header{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    color: white;
+    text-align: center;
+}
+
 .poke-big-container{
     @include flex-center;
 }
@@ -45,18 +52,21 @@
 }
 
 .pokemon-image {
-    width: 80px;
-    height: 80px;
+    width: 5rem;
+    height: auto;
     margin-top: 10px;
 }
 
 
 .pagination{
-    display: flex;
-    justify-content: center;
+    @include flex-center;
     margin-top: 4rem;
     margin-bottom: 4rem;
-
+    span{
+        color:white;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
 }
 
 %pagination-button {
@@ -67,24 +77,27 @@
     transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-button.prev-button {
-    margin-right: 2rem;
+a.prev-button {
     @extend %pagination-button;
     background-color: lightgray; /* Default background */
 }
 
-button.next-button {
+a.next-button {
     @extend %pagination-button;
     background-color: lightgray;
 }
 
-button.prev-button:hover {
+a.prev-button:hover {
     background-color: blue;
+    color:white;
+    font-weight: bold;
     cursor: pointer;
 }
 
-button.next-button:hover {
+a.next-button:hover {
     background-color: red;
+    font-weight: bold;
+    color:white;
     cursor: pointer;
 }
 

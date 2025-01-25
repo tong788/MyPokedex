@@ -1,6 +1,7 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useContext } from "react";
-import { PokemonContext} from "../data/PokemonContext";
+import { PokemonContext } from "../data/PokemonContext";
+import { FaArrowLeft } from "react-icons/fa";
 import "../scss/style.scss";
 
 const SearchPokemon = () => {
@@ -17,16 +18,21 @@ const SearchPokemon = () => {
   }
 
   return (
-    <div className="searched-pokemon-container">
-      <div>
-        <h2>{foundPokemon.name}</h2>
-        {imageUrl && (
-          <img
-            src={imageUrl}
-            alt={foundPokemon.name}
-            className="pokemon-image"
-          />
-        )}
+    <div className="big-searched-pokemon-container">
+      <div className="arrow-container">
+        <FaArrowLeft className="left-arrow" />
+      </div>
+      <div className="searched-pokemon-container">
+        <div>
+          <h1 className="pokemon-name">{foundPokemon.name}</h1>
+          {imageUrl && (
+            <img
+              src={imageUrl}
+              alt={foundPokemon.name}
+              className="selected-pokemon-image"
+            />
+          )}
+        </div>
       </div>
     </div>
   );

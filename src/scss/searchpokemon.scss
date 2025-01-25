@@ -1,9 +1,44 @@
+.arrow-container {
+    cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background-image: linear-gradient(purple, indigo); //gradient
+    border-radius: 50%; // Makes it fully circular
+    @include flex-center
+}
+
+.left-arrow {
+    color: white;
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+.big-searched-pokemon-container{
+    position: relative;
+}
+
 .searched-pokemon-container{
     @include flex-center;
+    flex-direction: row;
     div{ 
     color:black;
     background-color: white;
     width:50%;
-    @include flex-center;
+    margin:5rem;
+    border-radius: 5rem;
 } 
+}
+
+.pokemon-name{
+    text-align: center;
+}
+
+.selected-pokemon-image{
+    width: 20rem;
+    height: auto;
 }
