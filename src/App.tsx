@@ -3,8 +3,9 @@ import HomePage from "./pages/HomePage";
 import FavouritePage from "./pages/FavouritePage";
 import PokemonPage from "./pages/PokemonPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SearchedPokePage from "./pages/SearchedPokePage";
+import SelectedPokemonPage from "./pages/SelectedPokemonPage";
 import { PokemonProvider } from "./data/PokemonProvider";
+import SearchedPokePage from "./pages/SearchedPokemonPage";
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/pokemon/page/:page" element={<PokemonPage />} />
-            <Route path="/pokemon/:name" element={<SearchedPokePage />} />
+            <Route path="/pokemon/:name" element={<SelectedPokemonPage />} />
             <Route path="/favourite" element={<FavouritePage />} />
+            <Route path="/search/:name" element={<SearchedPokePage/>} />
           </Routes>
         </BrowserRouter>
       </div>
