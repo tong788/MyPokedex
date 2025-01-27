@@ -8,6 +8,7 @@ import { PokemonContext } from "./PokemonContext";
 
 interface Pokemon {
   name: string;
+  favourite?: boolean;
   url: string;
 }
 
@@ -21,7 +22,7 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
     const fetchPokemon = async () => {
       try {
         setLoading(true);
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=2500");
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1304");
         if (!res.ok) {
           throw new Error("Failed to fetch Pokémon data");
         }
@@ -39,8 +40,14 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
     fetchPokemon();
   }, []);
 
+  const toggleFavourite = (name: string) => {
+    setPokemon((prev) =>
+      prev.map((poke) => (poke.name === name ? { ...poke, favourite: !poke.favourite } : poke))
+    );
+  };
+
   return (
-    <PokemonContext.Provider value={{ pokemon, loading, error }}>
+    <PokemonContext.Provider value={{ pokemon, loading, error, toggleFavourite }}>
       {children}
     </PokemonContext.Provider>
   );

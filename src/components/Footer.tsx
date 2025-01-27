@@ -4,7 +4,7 @@ const Footer = () => {
     return (
       <footer className="footer-container">
         <div className="footer-inner-container">
-          <p>This website is made for educational purpose Only</p>
+          <p className="footer-text">This website got inspiration from pokemon, and it is made for educational purpose only</p>
           <p>Made by : Supanut Wongtanom</p>
         </div>
       </footer>

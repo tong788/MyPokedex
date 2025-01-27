@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import SearchedPokemon from "../components/SearchedPokemon";
 
-const SearchedPokePage = () => {
+const SearchedPokemonPage = () => {
     return (
         <Layout>
             <SearchedPokemon/>
@@ -9,4 +9,4 @@ const SearchedPokePage = () => {
     )
 }
 
-export default SearchedPokePage
+export default SearchedPokemonPage

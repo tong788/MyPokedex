@@ -39,6 +39,13 @@
     height:2rem;
 }
 
+button.search-button:hover{
+    background-image: linear-gradient(purple, indigo);
+    color:white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .search-bar{
     border-radius: 1rem;
     border: solid black 0.05rem;

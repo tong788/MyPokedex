@@ -5,7 +5,7 @@ import PokemonPage from "./pages/PokemonPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SelectedPokemonPage from "./pages/SelectedPokemonPage";
 import { PokemonProvider } from "./data/PokemonProvider";
-import SearchedPokePage from "./pages/SearchedPokemonPage";
+import SearchedPokemonPage from "./pages/SearchedPokemonPage";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
             <Route path="/pokemon/page/:page" element={<PokemonPage />} />
             <Route path="/pokemon/:name" element={<SelectedPokemonPage />} />
             <Route path="/favourite" element={<FavouritePage />} />
-            <Route path="/search/:name" element={<SearchedPokePage/>} />
+            <Route path="/search/:name" element={<SearchedPokemonPage/>} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { PokemonContext } from "../data/PokemonContext";
 import { FaArrowLeft } from "react-icons/fa";
 import "../scss/style.scss";
+import { FaStar } from "react-icons/fa";
 
 interface PokemonStat {
   stat: { name: string };
@@ -15,6 +16,7 @@ interface PokemonType {
 
 const SelectedPokemon = () => {
   const pokeContext = useContext(PokemonContext);
+  const toggleFavourite  = pokeContext?.toggleFavourite;
   const { name } = useParams<{ name: string }>();
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,6 +26,49 @@ const SelectedPokemon = () => {
 
   const [stats, setStats] = useState<PokemonStat[]>([]);
   const [types, setTypes] = useState<PokemonType[]>([]); // State for types
+
+  const typeIcons: Record<string, string> = {
+    normal:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/normal.png",
+    fire: "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/fire.png",
+    water:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/water.png",
+    grass:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/grass.png",
+    electric:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/electric.png",
+    ice: "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/ice.png",
+    fighting:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/fighting.png",
+    poison:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/poison.png",
+    ground:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/ground.png",
+    flying:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/flying.png",
+    psychic:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/psychic.png",
+    bug: "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/bug.png",
+    rock: "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/rock.png",
+    ghost:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/ghost.png",
+    dark: "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/dark.png",
+    dragon:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/dragon.png",
+    steel:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/steel.png",
+    fairy:
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/misc/types/gen8/fairy.png",
+  };
+
+  const like = () => {
+    if (name && toggleFavourite) {
+      // Ensure `name` is not undefined
+      toggleFavourite(name);
+    }
+    console.log("like");
+  };
+
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -48,14 +93,22 @@ const SelectedPokemon = () => {
   }
 
   return (
-    <div className="big-searched-pokemon-container">
+    <div className="big-selected-pokemon-container">
       <div className="arrow-container" onClick={() => navigate(-1)}>
         <FaArrowLeft className="left-arrow" />
       </div>
-      <div className="searched-pokemon-container">
-        <div className="inner-search-pokemon-container">
+      <div className="selected-pokemon-container">
+        <div className="inner-selected-pokemon-container">
+          <div className="star-container" onClick={like}>
+            {/* check from toggle favourite in context api instead state */}
+            <FaStar
+              className={
+                foundPokemon?.favourite ? "yellow-star-icon" : "star-icon"
+              }
+            />
+          </div>
           <h1 className="pokemon-name">{foundPokemon.name}</h1>
-          <div className="deepest-search-pokemon-container">
+          <div className="deepest-selected-pokemon-container">
             <div className="image-container">
               {imageUrl && (
                 <img
@@ -79,14 +132,26 @@ const SelectedPokemon = () => {
             </div>
           </div>
           <p className="type-text">Types</p>
-          {/* Display Pokémon Types */}
+          {/* Display Pokémon Types with Icons */}
           <div className="pokemon-types">
             <ul className="types">
-              {types.map((type) => (
-                <li className="list-pokemon-types" key={type.type.name}>
-                  {type.type.name}
-                </li>
-              ))}
+              {types.map((type) => {
+                const typeName = type.type.name;
+                const typeIcon = typeIcons[typeName];
+
+                return (
+                  <li className="list-pokemon-types" key={typeName}>
+                    {typeIcon && (
+                      <img
+                        src={typeIcon}
+                        alt={typeName}
+                        className="type-icon"
+                      />
+                    )}
+                    <span className="type-name">{typeName}</span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

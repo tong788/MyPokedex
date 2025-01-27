@@ -1,3 +1,28 @@
+div.star-container{
+    position: absolute;
+    cursor: pointer;
+    background-color: black;
+    border-radius: 50%;
+    top:2rem;
+    right:3rem;
+}
+
+.star-icon{
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    padding:0.5rem;
+    color:white;
+}
+
+.yellow-star-icon{
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    padding:0.5rem;
+    color:yellow;
+}
+
 div.arrow-container {
     cursor: pointer;
     position: absolute;
@@ -23,16 +48,17 @@ div.arrow-container:hover {
 }
 
 
-.big-searched-pokemon-container{
+.big-selected-pokemon-container{
     position: relative;
 }
 
-.searched-pokemon-container {
+.selected-pokemon-container {
   @include flex-center;
   flex-direction: row;
   flex-wrap: wrap; // Prevents overlap if there's not enough space
 
-  div.inner-search-pokemon-container { 
+  div.inner-selected-pokemon-container {
+    position: relative; 
     color: black;
     background-color: white;
     max-width: 60%;
@@ -40,7 +66,7 @@ div.arrow-container:hover {
     margin: 5rem;
     border-radius: 5rem;
 
-    div.deepest-search-pokemon-container { // Nested div
+    div.deepest-selected-pokemon-container { // Nested div
       @include flex-center;
       max-width: 95%; // <-- Prevent full width inheritance
       margin: 1rem auto;
@@ -99,16 +125,25 @@ h2.stat-text{
     } 
 }
 
+.type-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
 ul.types{
     @include flex-center;
+    padding:0rem;
     flex-direction: row;
+    gap: 1.5rem;
     li.list-pokemon-types{
-        display: inline-block;
+        @include flex-center;
     }
 }
 
 .type-text{
-    font-size:large;
+    font-size:x-large;
     text-align: center;
     font-weight: bold;
 }

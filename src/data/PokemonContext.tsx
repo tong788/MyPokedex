@@ -5,6 +5,7 @@ import {
 
 interface Pokemon {
   name: string;
+  favourite?: boolean;
   url: string;
 }
 
@@ -12,6 +13,7 @@ interface PokemonContextType {
   pokemon: Pokemon[];
   loading: boolean;
   error: string | null;
+  toggleFavourite: (name: string) => void;
 }
 
 export const PokemonContext = createContext<PokemonContextType | undefined>(undefined);

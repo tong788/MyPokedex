@@ -1,0 +1,30 @@
+.searched-pokemon-container{
+    position: relative;
+}
+
+div.arrow-container {
+    cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background-image: linear-gradient(blue, darkblue);
+    border-radius: 50%;
+    @include flex-center;
+    transition: background-image 5000ms ease-in-out;
+}
+
+.result-text{
+    text-align: center;
+    color:white;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.pokemon-results{
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}

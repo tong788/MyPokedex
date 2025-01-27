@@ -24,7 +24,7 @@ const PokemonList = () => {
   );
 
   return (
-    <div>
+    <section>
       <h2 className="poke-list-header">Pokémon List (Page {currentPage})</h2>
       <div className="poke-big-container">
         <div className="poke-container">
@@ -39,7 +39,7 @@ const PokemonList = () => {
                 state={{ imageUrl }}
                 className="pokemon"
               >
-                <p>
+                <p className="poke-name">
                   {id}. {item.name}
                 </p>
                 <img src={imageUrl} alt={item.name} className="pokemon-image" />
@@ -73,7 +73,7 @@ const PokemonList = () => {
           </button>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
