@@ -22,9 +22,10 @@ div.arrow-container {
     font-weight: bold;
 }
 
-.pokemon-results{
-    width:100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
+.pokemon-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; // Centers Pokémon search results
+  gap: 20px;
+  max-width: 100%; // Adjust width to prevent stretching
 }
