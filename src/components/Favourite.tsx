@@ -17,7 +17,7 @@ const Favourite = () => {
   return (
     <section>
       <h2 className="poke-list-header">Your Favourite Pokémon</h2>
-      <div className="poke-big-container">
+      <div className="fav-poke-big-container">
         <div className="poke-container">
           {favouritePokemon.length === 0 ? (
             <p className="no-favourites">You have no favourite Pokémon yet.</p>

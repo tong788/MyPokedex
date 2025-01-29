@@ -1,3 +1,8 @@
+.fav-poke-big-container{
+    @include flex-center;
+    margin-bottom:4rem;
+}
+
 .favourite-pokemon-container{
     position: relative;
 }
@@ -14,4 +19,5 @@
     color:white;
     font-size: x-large;
     font-weight: bold;
+    margin-bottom: 4rem;
 }
